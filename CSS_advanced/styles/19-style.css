@@ -306,6 +306,7 @@ a:active {
 
 .section-tagline {
     color: var(--color-primary);
+    margin: var(--section-tagline-margin);
 }
 
 .section-tagline {
