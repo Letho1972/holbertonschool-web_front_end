@@ -1,0 +1,13 @@
+/* Write a Sass file that assigns the text color */
+$color: #3D3D3D;
+$color1: #6D6D6D;
+body {
+    color: $color;
+    background-color: $color1;
+}
+p {
+    color: $color
+}
+h2{
+    background-color: $color1;
+}
