@@ -1,0 +1,14 @@
+/* nested declarations*/
+$font-size-small: 12px;
+$font-size-mid: 14px;
+$font-size-big: 16px;
+
+body {
+    font-size: $font-size-mid;
+    h1 {
+        font-size: $font-size-big;
+    }
+    h1.smaller {
+        font-size: $font-size-small;
+    }
+}
