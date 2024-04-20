@@ -1,0 +1,10 @@
+/* class .red inside body tags */
+$color-one: #3d3d3d;
+$color-two: #ff0000;
+
+body {
+    color: $color-one;
+    .red {
+        color: $color-two;
+    }
+}
