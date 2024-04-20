@@ -1,0 +1,9 @@
+/* &. the user hovers over button tags, text color should change*/
+$textcolor-one: #FF0000;
+$textcolor-two: #00FF00;
+button{
+    color: $textcolor-one;
+    &:hover{
+        color: $textcolor-two;
+    }
+}
