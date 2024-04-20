@@ -1,0 +1,9 @@
+/*class .red that are the first children of the body*/
+$color-one: #3D3D3D;
+$color-two:  #FF0000;
+    body {
+        color: $color-one;
+        > .red {
+            color: $color-two;
+        } 
+}
