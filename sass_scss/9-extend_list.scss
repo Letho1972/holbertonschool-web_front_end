@@ -1,0 +1,18 @@
+/*class .success and @extend style of the class .info*/
+$size: 12px;
+$first-text-color: #ff0000;
+$second-text-color: #00ff00;
+
+.info {
+    font-size: $size;
+}
+
+.success {
+    @extend .info;
+    color: $second-text-color;
+}
+
+.warning {
+    @extend .info;
+    color: $first-text-color;
+}
