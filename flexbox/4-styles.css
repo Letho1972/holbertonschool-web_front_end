@@ -368,6 +368,7 @@ a:active {
 
 ul.row {
   margin: -1rem;
+  padding: 0;
   list-style: none;
 }
 
@@ -375,7 +376,6 @@ ul.row {
 
 [class*='col-'] {
   margin: 1rem;
-  padding: 0.5rem;
 }
 
 .col-1-3 {
