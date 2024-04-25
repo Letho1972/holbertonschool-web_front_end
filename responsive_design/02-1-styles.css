@@ -265,7 +265,10 @@
     width: 100%;
   }
    
-  @media screen and (max-width: 767px) {}
+  @media screen and (max-width: 767px) {
+    .navbar-menu {display: none;
+    }
+  }
   
   /* Header
       ============================= */
@@ -406,12 +409,12 @@
   /* Section Latest news
       ============================= */
   @media screen and (max-width: 767px) 
-  {}
+  {
   
   .section-latest-news .row {
     flex-direction: column;
   }
-  
+}
   /* Section SERVICES
       ============================= */
   

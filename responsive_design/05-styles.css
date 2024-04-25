@@ -486,7 +486,7 @@ ul.row {
 
 .header .menu-icon {
   cursor: pointer;
-  padding: 2, 5rem;
+  padding: 2.5rem;
   position: relative;
   user-select: none;
 }
@@ -512,7 +512,7 @@ ul.row {
 }
 
 .header .menu-icon .navicon::before {
-  top: -.7rem;
+  top: .7rem;
 }
 
 .header .menu-icon .navicon::after {

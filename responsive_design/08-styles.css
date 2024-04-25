@@ -730,7 +730,7 @@ html {
   /* Card WORK
         ============================= */
 
-        @media (max-width: 767px) {}
+        @media (max-width: 767px) {
 
   .card-inner {
     color: var(--color-white);
