@@ -787,7 +787,6 @@ html {
   }
   
   .card-work .card-title a {
-    padding: 2rem 1rem 0 1rem;
     display: block;
     text-decoration: none;
     padding-top: 45%;
@@ -801,7 +800,15 @@ html {
     bottom: 0;
     content: '';
   }
-  
+  .card-work .card-title a::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+  }
+
   .card-work:hover .card-title {
     opacity: 1;
   }
