@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon formulaire</title>
+</head>
+
+<body>
+
+    <!-- Add two text inputs, with the id firstname and email -->
+
+    <label for="Firstname">First name:</label>
+    <input type="text" id="Firstname" name="Firstname"><br>
+
+
+    <label for="Email">Email:</label>
+    <input type="text" id="EMAIL" name="EMAIL"><br>
+
+    <!-- Add one button with the text “Log me in” that will call the function setCookies -->
+    <button onclick="setCookies()">Log me in</button>
+    <button onclick="showCookies()">Show the cookies</button>
+
+    <!--Create functions & Create cookie with expiration date and specific path-->
+
+    <script>
+        function setCookies() {
+            const firstnameValue = document.getElementById("firstname").value;
+            const emailValue = document.getElementById("email").value;
+
+            document.cookie = `firstname=${firstnameValue}`;
+            document.cookie = `email=${emailValue}`;
+            document.cookie = " expires=" + new Date(Date.now() + 10 * 864e5).toUTCString() + "; path=/";
+        }
+
+        function showCookies() {
+            const cookiesParagraph = document.createElement("p");
+            const cookiesText = `Cookies: First name - ${getCookie("firstname")}, Email - ${getCookie("email")}`;
+            cookiesParagraph.innerHTML = cookiesText;
+
+            document.body.appendChild(cookiesParagraph);
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(";").shift();
+            return "";
+        }
+
+    </script>
+
+    <!--Use Vanilla JS-->
+
+    <script src="chemin/vers/vanilla.js"></script>
+
+
+
+</body>
+
+</html>
