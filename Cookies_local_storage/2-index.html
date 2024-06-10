@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon formulaire</title>
+    <title>Basic Cookies</title>
 </head>
 
+<!-- create a basic html template
+It should create a DOM element p
+It should set the inner html with Cookies: and the value of the cookie
+It should append the paragraph at the bottom of the page -->
+
 <body>
+    <div>
+        <div>
+            <h1>Login to the website</h1>
+            <input type="text" placeholder="Firstname" id="firstname">
+            <input type="email" placeholder="Email" id="email">
+            <button onclick="setCookies()">Log me in</button>
+        </div>
 
-    <!-- Add two text inputs, with the id firstname and email -->
-
-    <label for="Firstname">First name:</label>
-    <input type="text" id="Firstname" name="Firstname"><br>
-
-
-    <label for="Email">Email:</label>
-    <input type="text" id="EMAIL" name="EMAIL"><br>
-
-    <!-- Add one button with the text “Log me in” that will call the function setCookies -->
-    <button onclick="setCookies()">Log me in</button>
-    <button onclick="showCookies()">Show the cookies</button>
-
-    <!--Create functions & Create cookie with expiration date and specific path-->
-
+        <div>
+            <h1>Cookies</h1>
+            <button onclick="showCookies()">Show the cookies</button>
+        </div>
+    </div>
     <script>
         function setCookies() {
-            const firstnameValue = document.getElementById("firstname").value;
-            const emailValue = document.getElementById("email").value;
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
 
-            document.cookie = `firstname=${firstnameValue}`;
-            document.cookie = `email=${emailValue}`;
-            document.cookie = " expires=" + new Date(Date.now() + 10 * 864e5).toUTCString() + "; path=/";
+            const now = new Date();
+            now.setTime(now.getTime() + (10 * 24 * 60 * 60 * 1000));  // setting cookies to expire in 10 days
+            const expires = "expires=" + now.toUTCString();
+
+            document.cookie = `firstname=${firstname}; path=/`;
+            document.cookie = `email=${email}; path=/`;
         }
 
         function showCookies() {
-            const cookiesParagraph = document.createElement("p");
-            const cookiesText = `Cookies: First name - ${getCookie("firstname")}, Email - ${getCookie("email")}`;
-            cookiesParagraph.innerHTML = cookiesText;
-
-            document.body.appendChild(cookiesParagraph);
+            const email = getCookie('email');
+            const firstname = getCookie('firstname');  // display the paragraph Email: EMAIL - Firstname: FIRSTNAME
+            const displayText = `Email: ${email} - Firstname: ${firstname}`;
+            document.getElementById('cookieDisplay').innerText = displayText;
         }
 
         function getCookie(name) {
-            const value = `; ${document.cookie}`;
+            const value = `; ${document.cookie}`;  // Create a function getCookie
             const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(";").shift();
-            return "";
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return '';
         }
-
     </script>
-
-    <!--Use Vanilla JS-->
-
-    <script src="chemin/vers/vanilla.js"></script>
-
-
-
 </body>
-
 </html>
