@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Cookies</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+</head>
+
+<!-- create a basic html template
+It should create a DOM element p
+It should set the inner html with Cookies: and the value of the cookie
+It should append the paragraph at the bottom of the page -->
+
+<body>
+    <div>
+        <div>
+            <h1>Login to the website</h1>
+            <input type="text" placeholder="Firstname" id="firstname">
+            <input type="email" placeholder="Email" id="email">
+            <button onclick="setCookies()">Log me in</button>
+        </div>
+
+        <div>
+            <h2>Login form</h2>
+            <input type="text">
+            <input type="text">
+            <button onclick="setCookies()">Login form</button>
+        </div>
+
+        <div>
+            <h1>Cookies</h1>
+            <button onclick="showCookies()">Show the cookies</button>
+        </div>
+    </div>
+    <script>
+        function setCookies() {
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+
+            const now = new Date();
+            now.setTime(now.getTime() + (10 * 24 * 60 * 60 * 1000));  // setting cookies to expire in 10 days
+            const expires = "expires=" + now.toUTCString();
+
+            document.cookie = `firstname=${firstname}; path=/`;
+            document.cookie = `email=${email}; path=/`;
+        }
+
+        function showCookies() {
+            const email = getCookie('email');
+            const firstname = getCookie('firstname');  // display the paragraph Email: EMAIL - Firstname: FIRSTNAME
+            const displayText = `Email: ${email} - Firstname: ${firstname}`;
+            document.getElementById('cookieDisplay').innerText = displayText;
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;  // Create a function getCookie
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return '';
+        }
+
+        function showform() {
+            const welcomeMessage = document.getElementById('welcome-message');
+            if (welcomeMessage) {
+                welcomeMessage.remove();
+            }
+            const form = document.getElementById('form');
+            <button onclick="showForm()">Show Form</button>
+        }
+
+        function hideform() {
+            // Sélectionne le formulaire par son ID
+            var form = document.getElementById('myForm');
+
+            // Vérifie si le formulaire existe
+            if (form) {
+                // Change le style CSS pour cacher le formulaire
+                form.style.display = 'none';
+            }
+        }
+
+        function deleteCookiesAndShowFormorm() {
+
+            // Supprimer les deux cookies spécifiés en définissant leur date d'expiration dans le passé
+            document.cookie = 'nomCookie1=; expires=Thu, 02 nov 1972 00:00:00 GMT; path=/';
+            document.cookie = 'nomCookie2=; expires=Thu, 02 nov 1972 00:00:00 GMT; path=/';
+
+            // Afficher le formulaire
+            afficherFormulaire();
+        }
+
+        // Main function
+        function showWelcomeMessageOrForm() {
+            if (!isLoggedIn()) {
+                showForm();
+            } else {
+                const firstName = getFirstName();
+                document.body.innerHTML = `
+      <h1>Welcome ${firstName} <a id="logout" href="#">(logout)</a></h1>
+    `;
+
+                const logoutLink = document.getElementById('logout');
+                logoutLink.style.fontWeight = 'normal';
+                logoutLink.style.fontStyle = 'italic';
+                logoutLink.style.marginLeft = '10px';
+
+                logoutLink.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    deleteCookiesAndShowForm();
+                });
+            }
+        }
+
+        // Call the main function to execute the logic
+        showWelcomeMessageOrForm();
